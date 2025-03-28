@@ -1,0 +1,14 @@
+<script>
+    const objectToString = function (obj) {
+        let result = '';
+        for (let prop in obj) {
+            if (typeof obj[prop] === 'function') {
+                result += prop + ': [Function]\n';
+            } else {
+                result += prop + ': ' + obj[prop] + '\n';
+            }
+        }
+    return result;
+    }
+  alert(objectToString(window))
+</script>
