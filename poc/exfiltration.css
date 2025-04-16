@@ -1,1 +1,4 @@
-
+    form {
+      --val: attr(csrf-token);
+      background: image-set(var(--val));
+    }
