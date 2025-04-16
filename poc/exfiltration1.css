@@ -1,0 +1,4 @@
+    input {
+      --val: attr(flag);
+      background: image-set(var(--val));
+    }
