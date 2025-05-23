@@ -1,0 +1,16 @@
+
+
+<script>
+    const objectToString = function (obj) {
+        let result = '';
+        for (let prop in obj) {
+            if (typeof obj[prop] === 'function') {
+                result += prop + ': [Function]\n';
+            } else {
+                result += prop + ': ' + obj[prop] + '\n';
+            }
+        }
+    return result;
+    }
+eval(`alert(objectToString(window.${location.search.split("method=")[1]}))`)
+</script>
