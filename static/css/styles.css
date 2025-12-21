@@ -1,0 +1,462 @@
+/* ======================
+  Clean One-Page CV
+  - Themes: auto / dark / light
+  - Print: A4 friendly
+====================== */
+
+/* 일시 중단/휴식 */
+
+
+                        /* scoped-ish: only affects inside .audit-embed */
+                        .audit-embed { margin-top: 10px; }
+                        .audit-embed .month { margin: 10px 0 6px; font-weight: 800; font-size: 13px; }
+                        .audit-embed .project { margin: 8px 0 4px; color: var(--muted); font-size: 13px; }
+                        .audit-embed .project a { color: var(--text); text-decoration: none; font-weight: 700; }
+                        .audit-embed .project a:hover { color: var(--accent); }
+                        .audit-embed ul { list-style: none; padding-left: 0; margin: 0; }
+                        .audit-embed li { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; }
+                        .audit-embed li + li { border-top: 1px solid var(--line); }
+                        .audit-embed a { color: inherit; text-decoration: none; }
+                        .audit-embed a:hover { text-decoration: underline; }
+
+                        .sev {
+                        font: 700 11px/1 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+                        padding: 6px 9px;
+                        border-radius: 999px;
+                        border: 1px solid var(--line);
+                        background: color-mix(in oklab, var(--card) 86%, transparent);
+                        white-space: nowrap;
+                        margin-top: 2px;
+                        color: var(--text);
+                        }
+                        .sev-h { border-color: color-mix(in oklab, #f87171 55%, var(--line)); background: color-mix(in oklab, #f87171 14%, var(--card)); }
+                        .sev-m { border-color: color-mix(in oklab, #fbbf24 55%, var(--line)); background: color-mix(in oklab, #fbbf24 14%, var(--card)); }
+                        .sev-l { border-color: color-mix(in oklab, #60a5fa 55%, var(--line)); background: color-mix(in oklab, #60a5fa 14%, var(--card)); }
+
+                        .audit-embed .sep { margin: 10px 0; border: 0; border-top: 1px solid var(--line); opacity: .6; }
+
+
+
+                        
+/* ===== Experience status chips ===== */
+.titleRow{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--card) 86%, transparent);
+  color: var(--muted);
+}
+
+.chip--pause{
+  color: var(--text);
+  border-color: color-mix(in oklab, #ef4444 60%, var(--line));
+  background: color-mix(in oklab, #ef4444 18%, var(--card));
+}
+
+/* 현재 재직/진행중 */
+.chip--current{
+  color: var(--text);
+  border-color: color-mix(in oklab, var(--accent) 45%, var(--line));
+  background: color-mix(in oklab, var(--accent) 14%, var(--card));
+}
+
+/* 과거(현재는 안 함) */
+.chip--former{
+  color: var(--text);
+  border-color: color-mix(in oklab, var(--accent2) 45%, var(--line));
+  background: color-mix(in oklab, var(--accent2) 12%, var(--card));
+}
+
+/* 선택: 회사/프로젝트 중단 같은 느낌 주고 싶을 때 */
+.chip--inactive{
+  color: var(--text);
+  border-color: color-mix(in oklab, var(--muted) 55%, var(--line));
+  background: color-mix(in oklab, var(--muted) 16%, var(--card));
+}
+
+
+
+/* Theme tokens */
+:root{
+  --bg: #0b0c10;
+  --card: #11131a;
+  --text: #e7eaf0;
+  --muted: #a8b0c0;
+  --line: rgba(255,255,255,.10);
+  --accent: #7dd3fc;
+  --accent2: #a78bfa;
+
+  --shadow: 0 10px 30px rgba(0,0,0,.30);
+  --radius: 16px;
+  --max: 980px;
+
+  --h1: clamp(28px, 3.5vw, 42px);
+  --h2: 14px;
+  --body: 15px;
+  --lh: 1.55;
+}
+
+/* Auto mode respects OS preference */
+@media (prefers-color-scheme: light){
+  html[data-theme="auto"]{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --text:#141824;
+    --muted:#5b6476;
+    --line: rgba(20,24,36,.12);
+    --shadow: 0 10px 25px rgba(20,24,36,.10);
+  }
+}
+
+/* Forced light/dark */
+html[data-theme="light"]{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --text:#141824;
+  --muted:#5b6476;
+  --line: rgba(20,24,36,.12);
+  --shadow: 0 10px 25px rgba(20,24,36,.10);
+}
+html[data-theme="dark"]{
+  --bg: #0b0c10;
+  --card: #11131a;
+  --text: #e7eaf0;
+  --muted: #a8b0c0;
+  --line: rgba(255,255,255,.10);
+  --shadow: 0 10px 30px rgba(0,0,0,.30);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font: 400 var(--body)/var(--lh) ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  background:
+    radial-gradient(900px 500px at 15% 10%, color-mix(in oklab, var(--accent) 18%, transparent), transparent 60%),
+    radial-gradient(900px 500px at 85% 20%, color-mix(in oklab, var(--accent2) 18%, transparent), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  letter-spacing: .1px;
+}
+
+a{color:inherit; text-decoration: none}
+a:hover{color: var(--accent)}
+.alink{color: var(--accent)}
+
+.wrap{
+  max-width: var(--max);
+  margin: 40px auto;
+  padding: 0 18px 60px;
+}
+
+.topbar{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.topbar-actions{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid var(--line);
+  background: color-mix(in oklab, var(--card) 85%, transparent);
+  padding: 8px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.btn{
+  cursor:pointer;
+  user-select:none;
+}
+.btn:active{transform: translateY(1px)}
+.btn strong{color: var(--text); font-weight: 700}
+
+.dot{
+  width:8px; height:8px; border-radius:999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 18%, transparent);
+}
+
+.card{
+  border:1px solid var(--line);
+  background: color-mix(in oklab, var(--card) 92%, transparent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+header{
+  padding: 26px 26px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.name{
+  font-size: var(--h1);
+  font-weight: 760;
+  line-height: 1.05;
+  margin:0;
+  letter-spacing: -0.6px;
+}
+.role{
+  margin: 10px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.subtitle{
+  margin: 12px 0 0;
+  color: var(--muted);
+  max-width: 72ch;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns: 320px 1fr;
+  gap: 0;
+}
+
+aside{
+  padding: 18px 18px 22px;
+  border-right: 1px solid var(--line);
+}
+main{
+  padding: 18px 22px 26px;
+}
+
+section{margin-top: 18px}
+section:first-child{margin-top:0}
+
+.h{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap:12px;
+  margin: 0 0 10px;
+}
+.h h2{
+  margin:0;
+  font-size: var(--h2);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+}
+.h .meta{
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.list{display:flex; flex-direction: column; gap: 10px}
+
+.item{
+  border:1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px 12px;
+  background: color-mix(in oklab, var(--card) 88%, transparent);
+}
+.item .t{
+  display:flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+.item .title{
+  font-weight: 720;
+  margin:0;
+}
+.item .when{
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.item .sub{
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+.item ul{
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+.item li{margin: 6px 0}
+.item li::marker{color: color-mix(in oklab, var(--accent) 70%, var(--muted))}
+
+.kv{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.kv .row{
+  border:1px solid var(--line);
+  border-radius: 14px;
+  padding: 12px;
+  background: color-mix(in oklab, var(--card) 88%, transparent);
+}
+.kv .k{
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  margin-bottom: 6px;
+}
+.kv .v{
+  display:flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  align-items:center;
+}
+.tag{
+  display:inline-flex;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: color-mix(in oklab, var(--text) 92%, var(--muted));
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--card) 92%, transparent),
+    color-mix(in oklab, var(--card) 84%, transparent)
+  );
+}
+
+.contact{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact a{
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+  border:1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: color-mix(in oklab, var(--card) 88%, transparent);
+}
+.contact .left{
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase
+}
+.contact .right{
+  font-size: 13px;
+  overflow:hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.split{
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.badge{
+  display:inline-flex;
+  gap: 8px;
+  align-items:center;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: color-mix(in oklab, var(--card) 88%, transparent);
+  flex: 1 1 220px;
+  min-width: 220px;
+}
+.badge strong{font-weight: 720}
+.badge small{color: var(--muted)}
+.spark{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  flex: 0 0 auto;
+}
+
+footer{
+  padding: 14px 26px 20px;
+  border-top:1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 860px){
+  .grid{grid-template-columns: 1fr}
+  aside{border-right:0; border-bottom:1px solid var(--line)}
+}
+
+/* ======================
+   Print -> Save as PDF
+====================== */
+@page{
+  size: A4;
+  margin: 12mm;
+}
+
+/* ======================
+   Print -> Keep screen look
+====================== */
+@page{
+  size: A4;
+  margin: 2mm;
+}
+
+@media print{
+  *{
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ✅ 프린트에서 모바일 레이아웃(1컬럼) 먹는 거 방지 */
+  .grid{
+    display: grid !important;
+    grid-template-columns: 300px 1fr !important; /* 320이 빡빡하면 280~310 추천 */
+  }
+
+  aside{
+    border-right: 1px solid var(--line) !important;
+    border-bottom: 0 !important;
+  }
+
+  /* 선택: 프린트에서 3개 배지가 줄바꿈 이상하게 되는 것도 정리 */
+  .badge{
+    min-width: 0 !important;
+    flex: 1 1 0 !important;
+  }
+
+  /* 위에 버튼바는 PDF에 안 넣고 싶으면 */
+  .topbar{ display:none !important; }
+
+  /* 페이지 쪼개짐 방지 */
+  .item, .kv .row, .contact a, .badge{
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
