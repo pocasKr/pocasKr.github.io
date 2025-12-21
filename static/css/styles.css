@@ -4,7 +4,6 @@
   - Print: A4 friendly
 ====================== */
 
-/* 일시 중단/휴식 */
 
 
                         /* scoped-ish: only affects inside .audit-embed */
@@ -458,5 +457,31 @@ footer{
   .item, .kv .row, .contact a, .badge{
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+}
+
+
+/* Mobile fix: Experience title/meta stack nicely */
+@media (max-width: 520px){
+  .t{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .t-right{
+    white-space: normal;    
+    flex-wrap: wrap;       
+    gap: 8px;
+  }
+
+  .when{
+    white-space: nowrap;    
+  }
+
+  .title{
+    width: 100%;
+    min-width: 0;
   }
 }
