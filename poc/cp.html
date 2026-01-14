@@ -1,0 +1,10 @@
+<textarea id=input style=width:100%;height:80px;font-family:monospace>
+<h1>adsfasdf</h1>
+</textarea>
+<h2 id=gg>HIGHLIGHT AND CTRL C ME!</h2>
+<script>
+gg.oncopy = (e) =>
+
+{ e.preventDefault(); e.clipboardData.setData('text/html',input.value ); }
+;
+</script>
