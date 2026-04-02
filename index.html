@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeongwon Jo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        background: #fff;
+        color: #111;
+        font-family: 'IBM Plex Sans', sans-serif;
+        line-height: 1.5;
+    }
+
+    .container {
+        max-width: 700px;
+        margin: 60px auto;
+        padding: 0 16px;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    h2 {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 22px;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        font-weight: 600;
+        letter-spacing: -0.2px;
+        border-bottom: none;
+        padding-bottom: 0;
+        line-height: 1.2;
+    }
+
+    p {
+        font-family: 'IBM Plex Mono', monospace;
+        margin: 10px 0;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #111;
+        font-weight: 400;
+        letter-spacing: -0.1px;
+    }
+
+    ul {
+        margin: 8px 0 8px 20px;
+        padding: 0;
+    }
+
+    li {
+        font-family: 'IBM Plex Mono', monospace;
+        margin: 6px 0;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #111;
+        letter-spacing: -0.1px;
+    }
+
+    .top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+    }
+
+    .top-links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        position: relative;
+        top: 5px;
+    }
+
+    .top-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: #111;
+        border: 1px solid #111;
+        width: 28px;
+        height: 24px;
+        line-height: 1;
+    }
+
+    .top-link::before {
+        content: "";
+        width: 13px;
+        height: 13px;
+        display: inline-block;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+
+    .top-link.github::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23111' d='M8 0C3.58 0 0 3.67 0 8.2c0 3.63 2.29 6.7 5.47 7.79.4.08.55-.18.55-.4 0-.2-.01-.85-.01-1.54-2.01.38-2.53-.5-2.69-.96-.09-.24-.48-.97-.82-1.17-.28-.16-.68-.57-.01-.58.63-.01 1.08.59 1.23.84.72 1.25 1.87.9 2.33.69.07-.54.28-.9.51-1.1-1.78-.21-3.64-.92-3.64-4.09 0-.9.31-1.64.82-2.22-.08-.21-.36-1.05.08-2.18 0 0 .67-.22 2.2.85a7.4 7.4 0 0 1 2-.28c.68 0 1.36.09 2 .28 1.53-1.08 2.2-.85 2.2-.85.44 1.13.16 1.97.08 2.18.51.58.82 1.32.82 2.22 0 3.18-1.87 3.88-3.65 4.09.29.25.54.73.54 1.48 0 1.07-.01 1.94-.01 2.2 0 .22.15.48.55.4A8.25 8.25 0 0 0 16 8.2C16 3.67 12.42 0 8 0z'/%3E%3C/svg%3E");
+    }
+
+    .top-link.email::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23111' d='M1.5 3A1.5 1.5 0 0 0 0 4.5v7A1.5 1.5 0 0 0 1.5 13h13a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 14.5 3h-13zm0 1h13a.5.5 0 0 1 .38.18L8 8.95 1.12 4.18A.5.5 0 0 1 1.5 4zm-.5 1.33 4.93 3.41L1 11.74V5.33zm14 0v6.41l-4.93-3 4.93-3.41zM1.8 12l4.97-3.03.95.66a.5.5 0 0 0 .56 0l.95-.66L14.2 12H1.8z'/%3E%3C/svg%3E");
+    }
+
+    .top-link:hover {
+        background: #111;
+        color: #fff;
+    }
+
+    .top-link.x::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 1227'%3E%3Cpath fill='%23111' d='M714 519 1160 0h-106L667 450 358 0H0l468 681L0 1227h106l409-476 327 476h358L714 519zM569 687l-48-69L137 69h163l310 443 48 69 403 577H898L569 687z'/%3E%3C/svg%3E");
+    }
+
+    .top-link.blog::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23111' d='M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm5.74 7H11.8a12.2 12.2 0 0 0-1.03-4.04A6.52 6.52 0 0 1 13.74 7zM8 1.46c.6.86 1.35 2.7 1.7 5.54H6.3C6.65 4.16 7.4 2.32 8 1.46zM5.23 2.96A12.2 12.2 0 0 0 4.2 7H2.26a6.52 6.52 0 0 1 2.97-4.04zM2.26 9H4.2c.15 1.5.53 2.89 1.03 4.04A6.52 6.52 0 0 1 2.26 9zM8 14.54c-.6-.86-1.35-2.7-1.7-5.54h3.4c-.35 2.84-1.1 4.68-1.7 5.54zm2.77-1.5c.5-1.15.88-2.54 1.03-4.04h1.94a6.52 6.52 0 0 1-2.97 4.04z'/%3E%3C/svg%3E");
+    }
+
+    .top-link.eth::before {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 417'%3E%3Cpath fill='%23111' d='M127.6 0 124.8 9.5v272.2l2.8 2.8 127.6-75.4z'/%3E%3Cpath fill='%23333' d='M127.6 0 0 208.9l127.6 75.4V151.9z'/%3E%3Cpath fill='%23666' d='m127.6 308.5-1.6 2v96.9l1.6 4.6L255.3 233z'/%3E%3Cpath fill='%23444' d='M127.6 412V308.5L0 233z'/%3E%3Cpath fill='%23888' d='M127.6 284.3 255.3 233l-127.7-58.1z'/%3E%3Cpath fill='%23555' d='m0 233 127.6 51.3V174.9z'/%3E%3C/svg%3E");
+    }
+
+    .top-link:hover::before {
+        filter: invert(1);
+    }
+
+    .container p a,
+    .container li a {
+        color: #1e3a8a;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(30, 58, 138, 0.55);
+        transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .container p a:hover,
+    .container li a:hover {
+        color: #1e40af;
+        border-bottom-color: rgba(30, 64, 175, 0.85);
+    }
+
+    .muted {
+        font-family: 'IBM Plex Mono', monospace;
+        color: #4b5563;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .research-line {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .research-line .bounty {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1e3a8a;
+        white-space: nowrap;
+    }
+
+    .bug-list li {
+        position: relative;
+    }
+
+    .bug-lines {
+        margin: 6px 0;
+    }
+
+    .bug-line {
+        margin: 3px 0;
+        line-height: 1.38;
+    }
+
+    .bug-title {
+        font-weight: 500;
+        color: #0f172a;
+    }
+
+    .bounty-right {
+        float: right;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        color: #1e3a8a;
+        margin-left: 12px;
+        white-space: nowrap;
+    }
+
+    .bug-line::after,
+    .bug-list li::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .work-exp {
+        margin-left: 20px;
+        padding-left: 0;
+    }
+
+    .work-exp > li {
+        margin: 6px 0;
+    }
+
+    .work-exp .exp-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .work-exp .exp-date {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 15px;
+        line-height: 1.35;
+        color: #111;
+        letter-spacing: -0.1px;
+        margin: 0;
+    }
+
+    .work-exp .exp-role {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 15px;
+        line-height: 1.35;
+        color: #111;
+        letter-spacing: -0.1px;
+        margin: 1px 0 0 16px;
+    }
+
+    .exp-more-btn {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: #6b7280;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 13px;
+        line-height: 1.3;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    .exp-more-btn:hover {
+        color: #111827;
+    }
+
+    .exp-desc {
+        display: none;
+        margin: 4px 0 0 32px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 14px;
+        line-height: 1.45;
+        color: #374151;
+    }
+
+    .exp-desc.open {
+        display: block;
+    }
+
+    .challenge-list .ch-head {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 6px;
+    }
+
+    .challenge-list .ch-more-btn {
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: #6b7280;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 13px;
+        line-height: 1.3;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+    }
+
+    .challenge-list .ch-more-btn:hover {
+        color: #111827;
+    }
+
+    .challenge-list .ch-meta {
+        display: none;
+        margin-left: 16px;
+        color: #374151;
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    .challenge-list .ch-meta.open {
+        display: block;
+    }
+
+    .inline {
+        display: inline;
+    }
+
+    .is-hidden-item {
+        display: none;
+    }
+
+    .more-btn {
+        margin: 2px 0 0 20px;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: #6b7280;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 14px;
+        line-height: 1.4;
+        letter-spacing: -0.1px;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+        transition: color 0.15s ease;
+    }
+
+    .more-btn:hover {
+        color: #111827;
+    }
+
+    .redbull-icon {
+        width: 45px;
+        height: 40px;
+        margin-left: 1px;
+        vertical-align: middle;
+        object-fit: cover;
+        object-position: center;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+    <div class="top">
+        <h1>Jeongwon Jo</h1>
+        <div class="top-links">
+            <a class="top-link github" href="https://github.com/P0cas" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub"></a>
+            <a class="top-link email" href="mailto:pocas.cyber@gmail.com" aria-label="Email" title="Email"></a>
+            <a class="top-link x" href="https://x.com/pocas142" target="_blank" rel="noopener noreferrer" aria-label="X" title="X"></a>
+            <a class="top-link eth" href="https://eth.evm.pics/" target="_blank" rel="noopener noreferrer" aria-label="ETH Blog" title="ETH Blog"></a>
+            <a class="top-link blog" href="https://blog.evm.pics" target="_blank" rel="noopener noreferrer" aria-label="Blog" title="Blog"></a>
+        </div>
+    </div>
+
+    <h2>About</h2>
+    <p>im a baby snowboader, and imma get that red bull sponsorship within 20 years.<img class="redbull-icon" src="/assets/redbull.png" alt="Red Bull"> btw another one is to live a comfortable life as an investment ai agent</p>
+
+    <!-- Interest section removed -->
+
+    <h2>Work Experience</h2>
+    <ul class="work-exp">
+        <li>
+            <div class="exp-head">
+                <div class="exp-date">2026.02 ~ Present</div>
+            </div>
+            <div class="exp-role">Content Researcher, <a href="https://dreamhack.io/">@Dreamhack</a> (<a href="https://theori.io/">Theori</a>) <button class="exp-more-btn" type="button" aria-expanded="true">less</button></div>
+            <div class="exp-desc open">- Offensive security content authoring<br>- Web/Web3 wargame and CTF challenge authoring</div>
+        </li>
+        <li>
+            <div class="exp-head">
+                <div class="exp-date">2022.04 ~ 2026.01</div>
+            </div>
+            <div class="exp-role">Security Researcher, <a href="https://redalert.nshc.net/">@RedAlert</a> (<a href="https://www.nshc.net/">NSHC</a>) <button class="exp-more-btn" type="button" aria-expanded="true">less</button></div>
+            <div class="exp-desc open">- Web/Android vulnerability research<br>- Black-box web/mobile pentesting</div>
+        </li>
+    </ul>
+
+    <h2>Research</h2>
+    <ul class="no-toggle-list bug-list">
+        <li>Short Journey Web3 Audit Contest<span class="bounty-right"><a href="https://eth.evm.pics/audits/">Vulns</a></span></li>
+        <li>LFI via XSS in h2o-3, ML Framework (Internal ML Model leak) <span class="bounty-right">$10,890</span></li>
+        <li>URLParserCon — URL parser bugs → SSRF, XSS, Open Redirect <span class="bounty-right">$4,170</span></li>
+    </ul>
+
+    <h2>Bug Bounty</h2>
+    <div class="bug-lines">
+        <!-- moved to Research -->
+        <p class="bug-line"><span class="bug-title">Remote Code Execution in PSA NASA</span><span class="bounty-right"><a href="https://blog.evm.pics/posts/RCE-in-NASA/">Write Up</a></span></p>
+        <p class="bug-line"><span class="bug-title">XSS Sanitizer flaw in outlook</span></p>
+        <p class="bug-line"><span class="bug-title">Leaked all write ups via IDOR in dreamhack.io</span> <span class="bounty-right">$500</span></p>
+        <p class="bug-line"><span class="bug-title">NBB-2081, NBB-2082, NBB-2083, NBB-2153, NBB-2256, NBB-2285, NBB-2286, NBB-2287, NBB-2292, NBB-2025-0162</span> <span class="bounty-right">$1,050</span></p>
+        <p class="bug-line"><span class="bug-title">KVE-2021-1229, KVE-2021-1276, KVE-2021-1416, KVE-2021-1417, KVE-2021-1456, KVE-2021-1462, KVE-2021-1464</span> <span class="bounty-right">$1,600</span></p>
+        <p class="bug-line"><span class="bug-title">CVE-2021-3815, CVE-2021-3829, CVE-2021-3831 ~ CVE-2022-21649, CVE-2023-1117, CVE-2023-6013, CVE-2024-57711, CVE-2025-62713, CVE-2025-66509</span> <span class="bounty-right">$15,513.5</span></p>
+    </div>
+
+</div>
+
+<script>
+    document.querySelectorAll('.exp-more-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('li');
+            const desc = item ? item.querySelector('.exp-desc') : null;
+            if (!desc) return;
+
+            const isOpen = desc.classList.toggle('open');
+            btn.textContent = isOpen ? 'less' : 'info';
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    });
+
+    document.querySelectorAll('.ch-more-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('li');
+            const meta = item ? item.querySelector('.ch-meta') : null;
+            if (!meta) return;
+
+            const isOpen = meta.classList.toggle('open');
+            btn.textContent = isOpen ? 'less' : 'info';
+            btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    });
+
+    document.querySelectorAll('.container ul').forEach((list) => {
+        if (list.classList.contains('work-exp') || list.classList.contains('work-exp-detail') || list.classList.contains('no-toggle-list')) return;
+
+        const items = list.querySelectorAll('li');
+        if (items.length <= 3) return;
+
+        for (let i = 3; i < items.length; i++) {
+            items[i].classList.add('is-hidden-item');
+        }
+
+        const button = document.createElement('button');
+        button.className = 'more-btn';
+        button.type = 'button';
+        button.textContent = 'more';
+
+        let expanded = false;
+        button.addEventListener('click', () => {
+            expanded = !expanded;
+            for (let i = 3; i < items.length; i++) {
+                items[i].classList.toggle('is-hidden-item', !expanded);
+            }
+            button.textContent = expanded ? 'less' : 'more';
+        });
+
+        list.insertAdjacentElement('afterend', button);
+    });
+</script>
+</body>
+</html>
